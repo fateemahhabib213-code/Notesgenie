@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #120f0e;
+  --color-bg-elevated: #1c1815;
+  --color-text: #f3f2f8;
+  --color-text-soft: #9c99ad;
+  --color-text-faint: #6b6879;
+
+  --color-violet: #8b5cf6;
+  --color-plum: #6b4a7a;
+  --color-brown: #b8763f;
+  --color-brown-deep: #8a5a2f;
+  --color-success: #34d399;
+  --color-danger: #f87171;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(ellipse 65% 50% at 100% 15%, rgba(184, 118, 63, 0.20), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 20%, rgba(107, 74, 122, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(138, 90, 47, 0.16), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 48px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 48px);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(16px, -26px); }
+}
+
+@keyframes fade-slide-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float-slow { animation: float-slow 16s ease-in-out infinite; }
+  .animate-float-slow-delayed { animation: float-slow 20s ease-in-out infinite reverse; }
+  .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+}
+
+@keyframes drift-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes drift-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-drift-up { animation-name: drift-up; animation-timing-function: linear; animation-iteration-count: infinite; }
+  .animate-drift-down { animation-name: drift-down; animation-timing-function: linear; animation-iteration-count: infinite; }
+}
+
+.source-card-enter {
+  animation: fade-slide-in 0.15s ease-out;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
