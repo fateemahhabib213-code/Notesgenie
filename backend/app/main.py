@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import upload, chat
 
@@ -20,3 +21,4 @@ app.include_router(chat.router, prefix="/api")
 @app.get("/health")
 def health_check():
     return {"status": "ok", "service": "NotesGenie API"}
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
