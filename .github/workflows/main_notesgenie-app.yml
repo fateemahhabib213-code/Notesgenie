@@ -29,6 +29,17 @@ jobs:
           deactivate
           rm -rf antenv
 
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm install
+          npm run build
+
+      - name: Copy frontend build to backend static
+        run: |
+          rm -rf backend/static
+          cp -r frontend/dist backend/static
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
@@ -55,7 +66,7 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_3D90DBB80B3F49C3A0FB10354CFE05B5 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EB459738E3DD4EAF854DDB2E7E4A72EC }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
