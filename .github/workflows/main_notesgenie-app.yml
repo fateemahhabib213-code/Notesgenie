@@ -29,7 +29,7 @@ jobs:
           deactivate
           rm -rf antenv
 
-           - name: Build frontend
+      - name: Build frontend
         working-directory: frontend
         env:
           VITE_API_BASE_URL: /api
