@@ -3,8 +3,9 @@ AI Engineering Internship — Task 3 | ProStackHub
 
 A single-document AI Q&A tool. Upload a PDF or TXT file, ask questions about it, and get answers grounded strictly in that document's content — with full transparency into which chunks were used to generate each answer.
 
+Built as Task 3 for the AI Engineering internship track.
 
----
+🔗 Live Demo: notesgenie-app-2026-d4dfgub8andeebhp.canadacentral-01.azurewebsites.net
 
 ## Features
 
@@ -16,7 +17,6 @@ A single-document AI Q&A tool. Upload a PDF or TXT file, ask questions about it,
 - Clear handling of edge cases: empty files, unsupported formats, unrelated questions, missing uploads
 - Responsive, polished UI (desktop, tablet, mobile)
 
----
 
 ## Architecture Overview
 
@@ -35,8 +35,6 @@ Question → Embed Question → Retrieve Top-3 Chunks → Build Context → Open
 The backend is a stateless FastAPI service. ChromaDB persists document chunks and their embeddings to disk. Since this is a single-document tool, each new upload resets the vector store before indexing the new file.
 
 For a deeper technical write-up, see [`ARCHITECTURE.md`](./ARCHITECTURE.md).
-
----
 
 ## Technology Stack
 
@@ -57,7 +55,6 @@ For a deeper technical write-up, see [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 
 > **Note on the original task spec:** the assignment brief referenced Google's `text-embedding-004` and Gemini's chat model. `text-embedding-004` has since been deprecated by Google, so this project uses OpenAI's `text-embedding-3-small` and `gpt-4o-mini` instead, with sign-off from the internship supervisor. ChromaDB was chosen over FAISS — both were listed as acceptable options in the brief.
 
----
 
 ## RAG Pipeline in Detail
 
@@ -70,7 +67,6 @@ For a deeper technical write-up, see [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 7. **Grounded generation** — the retrieved chunks are inserted into a strict system prompt instructing the model to answer only from that context, or say the answer isn't available.
 8. **Transparency** — the response includes the retrieved chunks (ID, text, similarity score) alongside the answer.
 
----
 
 ## Folder Structure
 
@@ -106,8 +102,6 @@ notesgenie/
 ├── README.md
 └── ARCHITECTURE.md
 ```
-
----
 
 ## Local Setup
 
@@ -151,7 +145,6 @@ npm run dev
 
 The app will be available at `http://localhost:5173`. Make sure the backend is running at the same time.
 
----
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -194,8 +187,6 @@ curl -X POST http://127.0.0.1:8000/api/ask \
 }
 ```
 
----
-
 ## Screenshots
  1. Document Upload
 
@@ -227,7 +218,6 @@ curl -X POST http://127.0.0.1:8000/api/ask \
 - Optional conversation memory within a session
 - `.docx` support
 
----
 
 ## Author
 
