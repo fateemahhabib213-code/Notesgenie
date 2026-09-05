@@ -190,15 +190,15 @@ curl -X POST http://127.0.0.1:8000/api/ask \
 ## Screenshots
  1. Document Upload
 
-![Document Upload](./screenshot/upload.png)
+![Document Upload](./screenshots/upload.png)
   
    2. Document Processing
 
-![Document Processing](./screenshot/processing.png)
+![Document Processing](./screenshots/processing.png)
 
   3. AI Chat & Source Transparency
 
-![AI Chat & Source Transparency](./screenshsot/chat.png)
+![AI Chat & Source Transparency](./screenshsots/chat.png)
 
 
 |
