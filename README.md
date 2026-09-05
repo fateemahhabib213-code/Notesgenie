@@ -198,7 +198,7 @@ curl -X POST http://127.0.0.1:8000/api/ask \
 
   3. AI Chat & Source Transparency
 
-![AI Chat & Source Transparency](./screenshsots/chat.png)
+![AI Chat & Source Transparency](./screenshots/chat.png)
 
 
 |
